@@ -1,0 +1,459 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f0f2f5;
+  /* Bỏ text-align: center đi */
+}
+
+.container {
+  padding: 20px;
+}
+
+.logo {
+  font-size: 40px !important;
+  font-weight: 700;
+  color: #1877f2;
+  margin: 40px 0 -15px;
+  text-align: center;
+}
+
+.alert {
+  background-color: #e7f3ff;
+  color: #000000;
+  border: 1px solid #a7d2ff;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  width: 100%;
+  max-width: 400px;
+  margin: 30px auto 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.alert .icon {
+  width: 18px;
+  height: 18px;
+  fill: #1877f2;
+}
+
+.login-box {
+  background-color: #fff;
+  width: 90%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  text-align: left;
+}
+
+.login-box h2 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #1c1e21;
+  text-align: center;
+  margin: 3px 0 19px;
+}
+
+.warning {
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  color: #856404;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #1877f2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  cursor: pointer;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.login-btn:hover {
+  background-color: #166fe5;
+}
+
+.forgot-link {
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  margin: 10px 0;
+  color: #1877f2;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.divider {
+  text-align: center;
+  margin: 10px 0;
+  color: #888;
+  position: relative;
+  font-size: 13px;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: #ccc;
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+.create-btn {
+  width: 55%;
+  padding: 10px;
+  background-color: #42b72a;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  cursor: pointer;
+  margin: 10px auto 0;
+  text-align: center;
+  display: block;
+}
+
+.create-btn:hover {
+  background-color: #36a420;
+}
+
+footer {
+  margin-top: 40px;
+  font-size: 12px;
+  color: #555;
+  text-align: center;
+}
+
+footer .langs,
+footer .links {
+  max-width: 600px;
+  margin: 10px auto;
+  line-height: 1.6;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+footer p {
+  margin: 10px 0;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding: 12px 40px 12px 12px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 15px;
+  font-family: inherit;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.toggle-password:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.toggle-password svg {
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  stroke-width: 2;
+}
+
+.fake-browser-bar {
+  background-color: #e5e5e5 !important;  /* Màu nền sáng */
+  height: 28px;                          /* ✅ Chiều cao chuẩn */
+  display: flex;
+  align-items: center;                   /* ✅ Căn giữa dọc */
+  padding: 0 12px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #000;
+  font-size: 13px;
+  box-shadow: inset 0 -1px 0 #ccc;       /* Viền dưới */
+  border-bottom: none;
+  border-radius: 0;
+}
+
+
+.circle-btn {
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle at 30% 30%, #666, #333);
+  border-radius: 50%;
+  margin-right: 14px;
+  box-shadow: inset 0 0 2px #000;
+}
+
+.tab {
+  background-color: #e5e5e5 !important;
+  color: #000;
+  padding: 4px 10px;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: none !important;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  font-family: "Segoe UI", sans-serif;
+
+  max-width: 160px;           /* ✅ Giới hạn chiều rộng tab */
+  white-space: nowrap;        /* ✅ Không cho xuống dòng */
+  overflow: hidden;           /* ✅ Ẩn phần vượt ra ngoài */
+  text-overflow: ellipsis;    /* ✅ Thêm dấu "..." nếu tràn */
+}
+
+
+.favicon {
+  width: 166px;
+  height: 16px;
+  margin-right: 16px;
+  object-fit: cover; /* hoặc contain nếu thấy méo */
+  border-radius: 12px;
+  background-color: transparent;
+}
+
+
+.tab {
+  display: flex;
+  align-items: center;
+  background-color: #3a3a3c;
+  padding: 4px 10px;
+  border-radius: 10px 10px 0 0;
+  box-shadow: inset 0 0 2px #222;
+  max-width: 200px;     /* 👈 thêm dòng này nếu cần */
+}
+
+.window-controls {
+  display: flex;
+  gap: 12px;
+  margin-left: auto;
+  align-items: center;
+}
+
+.window-controls span {
+  color: #615959 !important;      /* Màu đậm */
+  opacity: 1 !important;       /* Không làm mờ */
+  font-size: 14px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  transition: none;
+  line-height: 1;
+  cursor: default;
+}
+
+/* 👁‍🗨 Hover hiệu ứng nhẹ */
+.window-controls span:hover {
+  background-color: rgba(70, 65, 65, 0.05);
+  border-radius: 3px;
+}
+
+/* ✅ Riêng nút ĐÓNG (×) */
+.window-controls span:last-child {
+  font-size: 19px;
+  font-weight: bold;
+  font-family: system-ui, sans-serif;
+}
+.fake-url-bar {
+  background-color: #e6e6e6;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  color: #222;
+  border-bottom: 1px solid #c0c0c0;
+}
+
+.url-left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.lock-icon {
+  width: 46px !important;
+  height: 46px !important;
+  margin-right: -11px !important;
+  margin-left: -17px !important;
+  object-fit: contain;
+}
+
+.url-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.key-icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+}
+.fb-secondary-btn {
+  width: 100%;
+  max-width: 6600px;
+  padding: 11px 16px;
+  background-color: #ffffff;
+  color: #050505;
+  font-size: 15px;
+  font-weight: 500;
+  border: 1px solid #ccd0d5;
+  border-radius: 9999px; /* 👈 siêu bo tròn */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  text-align: center;
+}
+.loader-icon {
+  width: 22px;
+  height: 22px;
+  border: 2.0px solid #1c1e21;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;     /* Căn giữa dọc */
+  justify-content: center; /* Căn giữa ngang */
+  padding: 0;
+  line-height: 1;
+}
+
+.loader-icon .dot-static {
+  font-size: 10px;
+  font-weight: 500;
+  color: #000000;
+  line-height: 1;
+  letter-spacing: -1px;  /* Sát dấu chấm */
+}
+.approval-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0 24px;
+}
+
+.loader-icon {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #1c1e21;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.approval-text { text-align: left;      /* 👈 Sát mé trái */ }
+
+.dot-static {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1c1e21;
+  letter-spacing: -1px;
+}
+
+.approval-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #050505;
+}
+
+.approval-desc {
+  font-size: 13px;
+  color: #65676b;
+  margin-top: 2px;
+}
+.error {
+  color: red;
+  font-size: 14px;
+  background-color: #fee;
+  border: 1px solid #f00;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+<style>
+  .spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #fff;
+    border-top: 2px solid transparent;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+</style>
+
+
+
+
+

